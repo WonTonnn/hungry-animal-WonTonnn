@@ -22,6 +22,7 @@ public class MyWorld extends World
     int imageIndex = 0;
     SimpleTimer timer = new SimpleTimer();
     public static boolean winOrNo = false;
+    
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -79,7 +80,7 @@ public class MyWorld extends World
     //Increases label for score every time a fry is eaten
     public void increaseScore()
     {
-        score++;
+        score = score + 1;
         scoreLab.setValue(score);
         if(score < 50)
         {
@@ -94,6 +95,7 @@ public class MyWorld extends World
         {
             winOrNo = true;
             removeObject(fries);
+            scoreLab.setValue(0);
         }
     }
 
@@ -104,8 +106,9 @@ public class MyWorld extends World
         removeObject(fries);
         Greenfoot.delay(150);
         addObject(resetRequest, super.getWidth()/2, super.getHeight()/2 + 100);
-        gameOver = true;
         anim.setLocation(-100, -100);
+        score = 0;
+        gameOver = true;
 
     }
 
